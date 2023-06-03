@@ -1,0 +1,14 @@
+===============================
+declarations
+===============================
+
+favoritePie : Text
+favoritePie = "Apple pie"
+
+---
+
+(source_file
+  (type_signature (identifier) (type))
+  (assignment
+    (identifier)
+    (literal)))

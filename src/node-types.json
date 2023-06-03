@@ -1,0 +1,216 @@
+[
+  {
+    "type": "boolean_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "param",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "type_builtin",
+          "named": true
+        },
+        {
+          "type": "type_builtin_constructor",
+          "named": true
+        },
+        {
+          "type": "type_polymorphic",
+          "named": true
+        },
+        {
+          "type": "type_variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "term_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "term_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "term_definition",
+          "named": true
+        },
+        {
+          "type": "type_signature",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "term_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "param",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_builtin",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "type_builtin_constructor",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "type_signature",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "name",
+          "named": true
+        },
+        {
+          "type": "type_builtin",
+          "named": true
+        },
+        {
+          "type": "type_builtin_constructor",
+          "named": true
+        },
+        {
+          "type": "type_polymorphic",
+          "named": true
+        },
+        {
+          "type": "type_variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "()",
+    "named": false
+  },
+  {
+    "type": "->",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "Boolean",
+    "named": false
+  },
+  {
+    "type": "Bytes",
+    "named": false
+  },
+  {
+    "type": "Char",
+    "named": false
+  },
+  {
+    "type": "Float",
+    "named": false
+  },
+  {
+    "type": "Int",
+    "named": false
+  },
+  {
+    "type": "List",
+    "named": false
+  },
+  {
+    "type": "Nat",
+    "named": false
+  },
+  {
+    "type": "Text",
+    "named": false
+  },
+  {
+    "type": "Tuple",
+    "named": false
+  },
+  {
+    "type": "abilities.Request",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "name",
+    "named": true
+  },
+  {
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "type_polymorphic",
+    "named": true
+  },
+  {
+    "type": "type_variable",
+    "named": true
+  }
+]
