@@ -50,6 +50,10 @@
         {
           "type": "term_declaration",
           "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
         }
       ]
     }
@@ -92,9 +96,18 @@
         {
           "type": "param",
           "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "text_literal",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "type_builtin",
@@ -136,6 +149,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "()",

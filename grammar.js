@@ -11,10 +11,10 @@ module.exports = grammar({
       // $.use_clause
     ),
 
-    term_declaration: $ => seq(optional($.type_signature), $.term_definition),
 
-    type_signature: $ => seq($.name, ':', $._type),
-    term_definition: $ => seq($.name, seq($.param), '=', $._expression),
+    type_signature: $ => seq($.name, ':', $._type), // TODO separate type signature from type declaration?
+    term_declaration: $ => seq(optional($.type_signature), $.term_definition),
+    term_definition: $ => seq($.name, repeat($.param), '=', $._expression),
 
     name: $ => /[a-zA-Z][a-zA-Z0-9_]*/, // TODO:
     param: $ => seq($.name, optional($._type)),
@@ -26,10 +26,13 @@ module.exports = grammar({
 
     _literal: $ => choice(
       $.boolean_literal,
+      $.text_literal,
       // TODO:
     ),
     boolean_literal: $ => choice('true', 'false'),
-
+    text_literal: $ =>
+      // TODO: support multiline strings
+      seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'),
 
     // type_declaration: $ => seq($.name, ':', $._type),
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO

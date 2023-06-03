@@ -1,5 +1,5 @@
 ===============================
-declarations
+term declarations
 ===============================
 
 favoritePie : Text
@@ -8,7 +8,8 @@ favoritePie = "Apple pie"
 ---
 
 (source_file
-  (type_signature (identifier) (type))
-  (assignment
-    (identifier)
-    (literal)))
+  (term_declaration
+    (type_signature (name) (type_builtin))
+    (term_definition
+      (name)
+      (text_literal))))
