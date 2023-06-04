@@ -1,5 +1,17 @@
+const { sep1 } = require('./grammar/util')
+
+const naturalRegex = '0|[1-9][0-9]*';
+const integerRegex = `[+-]\d+`;
+const floatRegex = `${integerRegex}\\.${naturalRegex}`;
+
 module.exports = grammar({
   name: 'unison',
+
+  extras: $ => [
+    /\s/,
+    $.line_comment,
+    // $.block_comment,
+  ],
 
   rules: {
     source_file: $ => repeat($._top_level_declaration),
@@ -10,7 +22,6 @@ module.exports = grammar({
       // $.type_declaration,
       // $.use_clause
     ),
-
 
     type_signature: $ => seq($.name, ':', $._type), // TODO separate type signature from type declaration?
     term_declaration: $ => seq(optional($.type_signature), $.term_definition),
@@ -27,12 +38,15 @@ module.exports = grammar({
     _literal: $ => choice(
       $.boolean_literal,
       $.text_literal,
+      $.natural_literal,
+      $.float_literal,
       // TODO:
     ),
     boolean_literal: $ => choice('true', 'false'),
-    text_literal: $ =>
-      // TODO: support multiline strings
-      seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'),
+    text_literal: $ => seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'), // TODO: support multiline strings
+    natural_literal: $ => /[0-9]+/,
+    integer_literal: $ => /[+-][0-9]+/,
+    float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
 
     // type_declaration: $ => seq($.name, ':', $._type),
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO
@@ -68,5 +82,8 @@ module.exports = grammar({
       'abilities.Request' // TODO ?
     ),
     // type_user_defined: $ => seq($.name, $.type_arguments),
+
+    _terminator: _ => choice('\n', /;+/), // TODO:
+    line_comment: $ => token(seq('#', /.*/)), // TODO: support multiline comments
   }
 });

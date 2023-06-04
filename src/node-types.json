@@ -48,6 +48,14 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "natural_literal",
+          "named": true
+        },
+        {
           "type": "term_declaration",
           "named": true
         },
@@ -90,7 +98,15 @@
           "named": true
         },
         {
+          "type": "float_literal",
+          "named": true
+        },
+        {
           "type": "name",
+          "named": true
+        },
+        {
+          "type": "natural_literal",
           "named": true
         },
         {
@@ -149,6 +165,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "\n",
+    "named": false
   },
   {
     "type": "\"",
@@ -215,7 +235,19 @@
     "named": false
   },
   {
+    "type": "float_literal",
+    "named": true
+  },
+  {
+    "type": "line_comment",
+    "named": true
+  },
+  {
     "type": "name",
+    "named": true
+  },
+  {
+    "type": "natural_literal",
     "named": true
   },
   {

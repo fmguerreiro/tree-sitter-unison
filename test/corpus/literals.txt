@@ -10,3 +10,50 @@ false
 (source_file
   (boolean_literal)
   (boolean_literal))
+
+
+==============================
+natural number literals
+==============================
+
+0
+9
+18446744073709551615
+
+---
+
+(source_file
+  (natural_literal)
+  (natural_literal)
+  (natural_literal))
+
+==============================
+integer number literals
+==============================
+
++4
+-9223372036854775808
++9223372036854775807
+
+---
+
+(source_file
+  (integer_literal)
+  (integer_literal)
+  (integer_literal))
+
+
+==============================
+float number literals
+==============================
+
+1.6777216
+-1235.62
+
+----
+
+(source_file
+  (float_literal)
+  (float_literal))
+
+
