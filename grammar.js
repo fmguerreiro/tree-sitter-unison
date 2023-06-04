@@ -40,6 +40,7 @@ module.exports = grammar({
       $.byte_literal,
       $.char_literal,
       $.text_literal,
+      $.hash_literal,
       $.natural_literal,
       $.float_literal,
       // TODO:
@@ -51,6 +52,7 @@ module.exports = grammar({
       seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'),
       seq('"""', repeat(choice(/[^"\\]/, /\\./)), '"""')
     ),
+    hash_literal: $ => seq('#', /[0-9a-z]+/),
     natural_literal: $ => /[0-9]+/,
     integer_literal: $ => /[+-][0-9]+/,
     float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
@@ -92,6 +94,6 @@ module.exports = grammar({
     // type_user_defined: $ => seq($.name, $.type_arguments),
 
     _terminator: _ => choice('\n', /;+/), // TODO:
-    line_comment: $ => token(seq('#', /.*/)), // TODO: support multiline comments
+    line_comment: $ => token(seq('--', /.*/)), // TODO: support multiline comments
   }
 });

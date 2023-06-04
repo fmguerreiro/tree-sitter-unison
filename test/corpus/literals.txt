@@ -106,3 +106,17 @@ byte literal
 
 (source_file
   (byte_literal))
+
+
+==============================
+hash literal
+==============================
+
+#r1mtr0
+#2ef7bde608ce5404e97d5f042f95f89f1c2328715cc02967cd3bef656b753ecb6bce67141dfb7b9f
+
+---
+
+(source_file
+  (hash_literal)
+  (hash_literal))

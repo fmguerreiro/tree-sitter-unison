@@ -134,6 +134,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "hash_literal"
+        },
+        {
+          "type": "SYMBOL",
           "name": "natural_literal"
         },
         {
@@ -223,6 +227,19 @@
               "value": "\"\"\""
             }
           ]
+        }
+      ]
+    },
+    "hash_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[0-9a-z]+"
         }
       ]
     },
@@ -349,7 +366,7 @@
         "members": [
           {
             "type": "STRING",
-            "value": "#"
+            "value": "--"
           },
           {
             "type": "PATTERN",
