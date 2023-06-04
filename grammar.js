@@ -1,9 +1,5 @@
 const { sep1 } = require('./grammar/util')
 
-const naturalRegex = '0|[1-9][0-9]*';
-const integerRegex = `[+-]\d+`;
-const floatRegex = `${integerRegex}\\.${naturalRegex}`;
-
 module.exports = grammar({
   name: 'unison',
 
