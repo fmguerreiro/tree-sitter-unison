@@ -48,6 +48,14 @@
           "named": true
         },
         {
+          "type": "byte_literal",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
           "type": "float_literal",
           "named": true
         },
@@ -95,6 +103,14 @@
       "types": [
         {
           "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "byte_literal",
+          "named": true
+        },
+        {
+          "type": "char_literal",
           "named": true
         },
         {
@@ -175,6 +191,10 @@
     "named": false
   },
   {
+    "type": "\"\"\"",
+    "named": false
+  },
+  {
     "type": "()",
     "named": false
   },
@@ -229,6 +249,14 @@
   {
     "type": "abilities.Request",
     "named": false
+  },
+  {
+    "type": "byte_literal",
+    "named": true
+  },
+  {
+    "type": "char_literal",
+    "named": true
   },
   {
     "type": "false",

@@ -1,5 +1,10 @@
 const { sep1 } = require('./grammar/util')
 
+// https://www.unison-lang.org/learn/language-reference/escape-sequences/
+const escapeCharacters = [
+  '\0', '\a', '\b', '\f', '\n', '\r', '\t', '\v', '\s', '\\', '\'', '\"'
+]
+
 module.exports = grammar({
   name: 'unison',
 
@@ -23,7 +28,6 @@ module.exports = grammar({
     term_declaration: $ => seq(optional($.type_signature), $.term_definition),
     term_definition: $ => seq($.name, repeat($.param), '=', $._expression),
 
-    name: $ => /[a-zA-Z][a-zA-Z0-9_]*/, // TODO:
     param: $ => seq($.name, optional($._type)),
 
     _expression: $ => choice(
@@ -33,13 +37,20 @@ module.exports = grammar({
 
     _literal: $ => choice(
       $.boolean_literal,
+      $.byte_literal,
+      $.char_literal,
       $.text_literal,
       $.natural_literal,
       $.float_literal,
       // TODO:
     ),
     boolean_literal: $ => choice('true', 'false'),
-    text_literal: $ => seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'), // TODO: support multiline strings
+    byte_literal: $ => /0xs[0-9a-f]+/,
+    char_literal: $ => RegExp(`\\?[\u{0000}-\u{10FFFF}]`),  // TODO: doesnt handle emoji? or escape characters
+    text_literal: $ => choice(
+      seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'),
+      seq('"""', repeat(choice(/[^"\\]/, /\\./)), '"""')
+    ),
     natural_literal: $ => /[0-9]+/,
     integer_literal: $ => /[+-][0-9]+/,
     float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
@@ -47,6 +58,7 @@ module.exports = grammar({
     // type_declaration: $ => seq($.name, ':', $._type),
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO
 
+    name: $ => /[a-zA-Z][a-zA-Z0-9_]*/, // TODO:
     _type: $ => choice(
       $.type_variable,
       $.type_polymorphic,

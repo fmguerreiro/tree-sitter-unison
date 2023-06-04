@@ -50,10 +50,59 @@ float number literals
 1.6777216
 -1235.62
 
-----
+---
 
 (source_file
   (float_literal)
   (float_literal))
 
 
+==============================
+text literal
+==============================
+
+"text"
+"""
+hello world
+you
+"""
+"""
+hello escaped \" world
+"""
+
+---
+
+(source_file
+  (text_literal)
+  (text_literal)
+  (text_literal))
+
+
+==============================
+character literal
+==============================
+
+?a
+?ひ
+?🔥
+?\t
+
+---
+
+(source_file
+  (char_literal)
+  (char_literal)
+  (char_literal)
+  (char_literal))
+
+
+==============================
+byte literal
+==============================
+
+0xsdeadbeef
+
+---
+
+(source_file
+  (byte_literal))
