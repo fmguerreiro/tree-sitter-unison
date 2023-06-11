@@ -140,7 +140,7 @@ list literal
   (list_literal
     (natural_literal)
     (natural_literal)
-    (natural_literal)))
+    (natural_literal))
   (list_literal
     (natural_literal)))
 
