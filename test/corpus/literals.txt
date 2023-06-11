@@ -146,19 +146,6 @@ list literal
 
 
 ==============================
-function literal/lambda
-==============================
-
-x -> x Nat.+ 2
-
----
-
-(source_file
-  (hash_literal)
-  (hash_literal))
-
-
-==============================
 tuple literal
 ==============================
 
@@ -180,3 +167,22 @@ tuple literal
   (tuple_literal
     (natural_literal)
     (text_literal)))
+
+
+==============================
+function literal/lambda
+==============================
+
+x -> x
+x -> x + 2
+
+---
+
+(source_file
+  (lambda (param) (exp_lambda (param)))
+  (lambda
+    (param)
+    (exp_lambda
+      (addition_op
+        (param) (natural_literal))))
+  )

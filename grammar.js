@@ -1,10 +1,6 @@
 const { sep1 } = require('./grammar/util')
 const literal = require('./grammar/literal')
-
-// https://www.unison-lang.org/learn/language-reference/escape-sequences/
-const escapeCharacters = [
-  '\0', '\a', '\b', '\f', '\n', '\r', '\t', '\v', '\s', '\\', '\'', '\"'
-]
+const operation = require('./grammar/operation')
 
 module.exports = grammar({
   name: 'unison',
@@ -22,23 +18,26 @@ module.exports = grammar({
 
     _top_level_declaration: $ => choice(
       $._expression,
-      $.term_declaration,
+      // $.term_declaration,
       // $.type_declaration,
       // $.use_clause
     ),
 
-    type_signature: $ => seq($.name, ':', $._type), // TODO separate type signature from type declaration?
-    term_declaration: $ => seq(optional($.type_signature), $.term_definition),
-    term_definition: $ => seq($.name, repeat($.param), '=', $._expression),
+    // type_signature: $ => seq($.name, ':', $._type), // TODO separate type signature from type declaration?
+    // term_declaration: $ => seq(optional($.type_signature), $.term_definition),
+    // term_definition: $ => seq($.name, repeat($.param), '=', $._expression),
 
     param: $ => seq($.name, optional($._type)),
 
+    ...literal,
+    ...operation,
+
     _expression: $ => choice(
       $._literal,
+      $._operation,
       // TODO:
     ),
 
-    ...literal,
 
     // type_declaration: $ => seq($.name, ':', $._type),
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO
