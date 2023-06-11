@@ -10,6 +10,8 @@ module.exports = grammar({
 
   extras: $ => [
     /\s/,
+    // /\n/,
+    // $._terminator,
     $.line_comment,
     // $.block_comment,
   ],
@@ -43,24 +45,28 @@ module.exports = grammar({
       $.hash_literal,
       $.natural_literal,
       $.float_literal,
+      $.list_literal,
+      // $.lambda,
       // TODO:
     ),
     boolean_literal: $ => choice('true', 'false'),
     byte_literal: $ => /0xs[0-9a-f]+/,
-    char_literal: $ => RegExp(`\\?[\u{0000}-\u{10FFFF}]`),  // TODO: doesnt handle emoji? or escape characters
+    char_literal: $ => choice(RegExp(`\\?[\u{0000}-\u{10FFFF}]`), '?\t', '?\0', '?\a', '?\b', '?\f', '?\n', '?\r',  '?\v', '?\s', '?\\', '?\'', '?\"'),  // TODO: or escape characters
     text_literal: $ => choice(
       seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'),
       seq('"""', repeat(choice(/[^"\\]/, /\\./)), '"""')
     ),
-    hash_literal: $ => seq('#', /[0-9a-z]+/),
+    hash_literal: $ => seq('#', /[0-9a-z]+/), // TODO: cyclical hashes
     natural_literal: $ => /[0-9]+/,
-    integer_literal: $ => /[+-][0-9]+/,
+    integer_literal: $ => token(seq(choice('+', '-'), token.immediate(/\d+/))),  // /[+-]\d+/,
     float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
+    list_literal: $ =>  seq('[', sep1(',', optional($._literal)), ']'), // TODO: not quite working
+    lambda: $ => seq('\\', repeat($.param), '->', $._expression),
 
     // type_declaration: $ => seq($.name, ':', $._type),
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO
 
-    name: $ => /[a-zA-Z][a-zA-Z0-9_]*/, // TODO:
+    name: $ => 'hello world',  // /[a-zA-Z][a-zA-Z0-9_]*/, // TODO:
     _type: $ => choice(
       $.type_variable,
       $.type_polymorphic,

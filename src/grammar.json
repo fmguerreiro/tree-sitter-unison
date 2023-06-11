@@ -143,6 +143,10 @@
         {
           "type": "SYMBOL",
           "name": "float_literal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "list_literal"
         }
       ]
     },
@@ -164,8 +168,61 @@
       "value": "0xs[0-9a-f]+"
     },
     "char_literal": {
-      "type": "PATTERN",
-      "value": "\\?[\u0000-􏿿]"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\?[\u0000-􏿿]"
+        },
+        {
+          "type": "STRING",
+          "value": "?\t"
+        },
+        {
+          "type": "STRING",
+          "value": "?\u0000"
+        },
+        {
+          "type": "STRING",
+          "value": "?a"
+        },
+        {
+          "type": "STRING",
+          "value": "?\b"
+        },
+        {
+          "type": "STRING",
+          "value": "?\f"
+        },
+        {
+          "type": "STRING",
+          "value": "?\n"
+        },
+        {
+          "type": "STRING",
+          "value": "?\r"
+        },
+        {
+          "type": "STRING",
+          "value": "?\u000b"
+        },
+        {
+          "type": "STRING",
+          "value": "?s"
+        },
+        {
+          "type": "STRING",
+          "value": "?\\"
+        },
+        {
+          "type": "STRING",
+          "value": "?'"
+        },
+        {
+          "type": "STRING",
+          "value": "?\""
+        }
+      ]
     },
     "text_literal": {
       "type": "CHOICE",
@@ -248,16 +305,118 @@
       "value": "[0-9]+"
     },
     "integer_literal": {
-      "type": "PATTERN",
-      "value": "[+-][0-9]+"
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "+"
+              },
+              {
+                "type": "STRING",
+                "value": "-"
+              }
+            ]
+          },
+          {
+            "type": "IMMEDIATE_TOKEN",
+            "content": {
+              "type": "PATTERN",
+              "value": "\\d+"
+            }
+          }
+        ]
+      }
     },
     "float_literal": {
       "type": "PATTERN",
       "value": "[+-]?[0-9]+\\.[0-9]+"
     },
+    "list_literal": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_literal"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "_literal"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
+    },
+    "lambda": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "\\"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "param"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        }
+      ]
+    },
     "name": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z][a-zA-Z0-9_]*"
+      "type": "STRING",
+      "value": "hello world"
     },
     "_type": {
       "type": "CHOICE",

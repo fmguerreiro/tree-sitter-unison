@@ -5,9 +5,57 @@
     "fields": {}
   },
   {
+    "type": "char_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "hash_literal",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "list_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "byte_literal",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "natural_literal",
+          "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "param",
@@ -66,6 +114,10 @@
         },
         {
           "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "list_literal",
           "named": true
         },
         {
@@ -128,6 +180,10 @@
         },
         {
           "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "list_literal",
           "named": true
         },
         {
@@ -216,6 +272,10 @@
     "named": false
   },
   {
+    "type": ",",
+    "named": false
+  },
+  {
     "type": "->",
     "named": false
   },
@@ -225,6 +285,54 @@
   },
   {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": "?\u0000",
+    "named": false
+  },
+  {
+    "type": "?\b",
+    "named": false
+  },
+  {
+    "type": "?\t",
+    "named": false
+  },
+  {
+    "type": "?\n",
+    "named": false
+  },
+  {
+    "type": "?\u000b",
+    "named": false
+  },
+  {
+    "type": "?\f",
+    "named": false
+  },
+  {
+    "type": "?\r",
+    "named": false
+  },
+  {
+    "type": "?\"",
+    "named": false
+  },
+  {
+    "type": "?'",
+    "named": false
+  },
+  {
+    "type": "?\\",
+    "named": false
+  },
+  {
+    "type": "?a",
+    "named": false
+  },
+  {
+    "type": "?s",
     "named": false
   },
   {
@@ -264,15 +372,23 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "\\",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "abilities.Request",
     "named": false
   },
   {
     "type": "byte_literal",
-    "named": true
-  },
-  {
-    "type": "char_literal",
     "named": true
   },
   {

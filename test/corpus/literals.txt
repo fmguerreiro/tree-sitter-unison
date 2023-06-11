@@ -120,3 +120,63 @@ hash literal
 (source_file
   (hash_literal)
   (hash_literal))
+
+
+==============================
+list literal
+==============================
+
+[]
+["x"]
+[1,2, 3]
+[,,2]
+
+---
+
+(source_file
+  (list_literal)
+  (list_literal
+    (text_literal))
+  (list_literal
+    (natural_literal)
+    (natural_literal)
+    (natural_literal)))
+  (list_literal
+    (natural_literal)))
+
+
+==============================
+function literal/lambda
+==============================
+
+x -> x Nat.+ 2
+
+---
+
+(source_file
+  (hash_literal)
+  (hash_literal))
+
+
+==============================
+tuple literal
+==============================
+
+()
+("x")
+(1,2, 3)
+(,2,"hello")
+
+---
+
+(source_file
+  (tuple_literal)
+  (tuple_literal
+    (text_literal))
+  (tuple_literal
+    (natural_literal)
+    (natural_literal)
+    (natural_literal)))
+  (tuple_literal
+    (natural_literal)
+    (text_literal)))
