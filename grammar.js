@@ -46,6 +46,7 @@ module.exports = grammar({
       $.natural_literal,
       $.float_literal,
       $.list_literal,
+      $.tuple_literal,
       // $.lambda,
       // TODO:
     ),
@@ -60,7 +61,8 @@ module.exports = grammar({
     natural_literal: $ => /[0-9]+/,
     integer_literal: $ => token(seq(choice('+', '-'), token.immediate(/\d+/))),  // /[+-]\d+/,
     float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
-    list_literal: $ =>  seq('[', sep1(',', optional($._literal)), ']'), // TODO: not quite working
+    list_literal: $ =>  seq('[', sep1(',', optional($._literal)), ']'),
+    tuple_literal: $ => seq('(', sep1(',', optional($._literal)), ')'),
     lambda: $ => seq('\\', repeat($.param), '->', $._expression),
 
     // type_declaration: $ => seq($.name, ':', $._type),

@@ -53,6 +53,10 @@
         {
           "type": "text_literal",
           "named": true
+        },
+        {
+          "type": "tuple_literal",
+          "named": true
         }
       ]
     }
@@ -131,6 +135,10 @@
         {
           "type": "text_literal",
           "named": true
+        },
+        {
+          "type": "tuple_literal",
+          "named": true
         }
       ]
     }
@@ -201,6 +209,10 @@
         {
           "type": "text_literal",
           "named": true
+        },
+        {
+          "type": "tuple_literal",
+          "named": true
         }
       ]
     }
@@ -209,6 +221,53 @@
     "type": "text_literal",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "tuple_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "byte_literal",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "natural_literal",
+          "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
+        },
+        {
+          "type": "tuple_literal",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "type_builtin",
@@ -268,7 +327,15 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
     "type": "()",
+    "named": false
+  },
+  {
+    "type": ")",
     "named": false
   },
   {

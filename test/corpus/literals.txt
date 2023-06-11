@@ -176,7 +176,7 @@ tuple literal
   (tuple_literal
     (natural_literal)
     (natural_literal)
-    (natural_literal)))
+    (natural_literal))
   (tuple_literal
     (natural_literal)
     (text_literal)))
