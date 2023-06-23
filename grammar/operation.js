@@ -1,8 +1,10 @@
 module.exports = {
   _operation: $ => choice(
-    $.addition_op,
+    $.add_op,
+    $.mul_op,
     // TODO: check what other operations are available
   ),
 
-  addition_op: $ => prec.left(2, seq($._expression, '+', $._expression)),
+  add_op: $ => prec.left(2, seq($._expression, '+', $._expression)),
+  mul_op: $ => prec.left(2, seq($._expression, '*', $._expression))
 }

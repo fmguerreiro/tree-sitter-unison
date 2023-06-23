@@ -1,5 +1,5 @@
 ===============================
-term declarations
+term declaration 1
 ===============================
 
 favoritePie : Text
@@ -10,3 +10,21 @@ favoritePie = "Apple pie"
 (source_file
   (type_signature (type_variable) (type_builtin))
   (term_definition (type_variable) (text_literal)))
+
+
+===============================
+term declaration 2
+===============================
+
+timesTwo : Nat -> Nat
+timesTwo x = x * 2
+
+---
+
+(source_file
+  (type_signature (type_variable) (type_function (type_builtin) (type_builtin)))
+  (term_definition
+    (type_variable)
+    (param (type_variable))
+    (mul_op (type_variable) (natural_literal))
+))

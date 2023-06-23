@@ -194,6 +194,6 @@ x -> x + 2
 (source_file
   (lambda
     (param (type_variable))
-    (addition_op
+    (add_op
       (type_variable)
       (natural_literal))))

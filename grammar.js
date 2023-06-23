@@ -49,7 +49,7 @@ module.exports = grammar({
       // $.type_constructor,
       // $.type_application,
       // $.type_parenthesized,
-      // $.type_function,
+      $.type_function,
       // $.builtin_type,
       $.type_builtin_constructor,
       // $.type_user_defined,
@@ -57,7 +57,7 @@ module.exports = grammar({
 
     type_variable: $ => /[a-z][a-zA-Z0-9]*/,
     type_polymorphic: $ => /[A-Z]+/, // TODO:
-    // type_function: $ => seq($._type, '->', $._type),
+    type_function: $ => prec.right(2, seq($._type, '->', $._type)),
     type_builtin: $ => choice(
       'Nat',
       'Int',
