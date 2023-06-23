@@ -170,19 +170,30 @@ tuple literal
 
 
 ==============================
-function literal/lambda
+function literal/lambda 1
 ==============================
 
 x -> x
+
+---
+
+(source_file
+  (lambda
+    (param (type_variable))
+    (type_variable)))
+
+
+==============================
+function literal/lambda 2
+==============================
+
 x -> x + 2
 
 ---
 
 (source_file
-  (lambda (param) (exp_lambda (param)))
   (lambda
-    (param)
-    (exp_lambda
-      (addition_op
-        (param) (natural_literal))))
-  )
+    (param (type_variable))
+    (addition_op
+      (type_variable)
+      (natural_literal))))

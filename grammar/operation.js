@@ -4,5 +4,5 @@ module.exports = {
     // TODO: check what other operations are available
   ),
 
-  addition_op: $ => seq($._expression, '+', $._expression),
+  addition_op: $ => prec.left(2, seq($._expression, '+', $._expression)),
 }

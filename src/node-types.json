@@ -1,5 +1,64 @@
 [
   {
+    "type": "addition_op",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addition_op",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "byte_literal",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "lambda",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "natural_literal",
+          "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
+        },
+        {
+          "type": "tuple_literal",
+          "named": true
+        },
+        {
+          "type": "type_variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "boolean_literal",
     "named": true,
     "fields": {}
@@ -13,6 +72,69 @@
     "type": "hash_literal",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "lambda",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addition_op",
+          "named": true
+        },
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "byte_literal",
+          "named": true
+        },
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "lambda",
+          "named": true
+        },
+        {
+          "type": "list_literal",
+          "named": true
+        },
+        {
+          "type": "natural_literal",
+          "named": true
+        },
+        {
+          "type": "param",
+          "named": true
+        },
+        {
+          "type": "text_literal",
+          "named": true
+        },
+        {
+          "type": "tuple_literal",
+          "named": true
+        },
+        {
+          "type": "type_variable",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "list_literal",
@@ -43,6 +165,10 @@
           "named": true
         },
         {
+          "type": "lambda",
+          "named": true
+        },
+        {
           "type": "list_literal",
           "named": true
         },
@@ -70,14 +196,6 @@
       "required": true,
       "types": [
         {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "type_builtin",
-          "named": true
-        },
-        {
           "type": "type_builtin_constructor",
           "named": true
         },
@@ -101,75 +219,9 @@
       "required": false,
       "types": [
         {
-          "type": "boolean_literal",
+          "type": "addition_op",
           "named": true
         },
-        {
-          "type": "byte_literal",
-          "named": true
-        },
-        {
-          "type": "char_literal",
-          "named": true
-        },
-        {
-          "type": "float_literal",
-          "named": true
-        },
-        {
-          "type": "hash_literal",
-          "named": true
-        },
-        {
-          "type": "list_literal",
-          "named": true
-        },
-        {
-          "type": "natural_literal",
-          "named": true
-        },
-        {
-          "type": "term_declaration",
-          "named": true
-        },
-        {
-          "type": "text_literal",
-          "named": true
-        },
-        {
-          "type": "tuple_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "term_declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "term_definition",
-          "named": true
-        },
-        {
-          "type": "type_signature",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "term_definition",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
         {
           "type": "boolean_literal",
           "named": true
@@ -191,19 +243,15 @@
           "named": true
         },
         {
+          "type": "lambda",
+          "named": true
+        },
+        {
           "type": "list_literal",
           "named": true
         },
         {
-          "type": "name",
-          "named": true
-        },
-        {
           "type": "natural_literal",
-          "named": true
-        },
-        {
-          "type": "param",
           "named": true
         },
         {
@@ -212,6 +260,10 @@
         },
         {
           "type": "tuple_literal",
+          "named": true
+        },
+        {
+          "type": "type_variable",
           "named": true
         }
       ]
@@ -251,6 +303,10 @@
           "named": true
         },
         {
+          "type": "lambda",
+          "named": true
+        },
+        {
           "type": "list_literal",
           "named": true
         },
@@ -270,45 +326,9 @@
     }
   },
   {
-    "type": "type_builtin",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "type_builtin_constructor",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "type_signature",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "name",
-          "named": true
-        },
-        {
-          "type": "type_builtin",
-          "named": true
-        },
-        {
-          "type": "type_builtin_constructor",
-          "named": true
-        },
-        {
-          "type": "type_polymorphic",
-          "named": true
-        },
-        {
-          "type": "type_variable",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "\n",
@@ -339,19 +359,15 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
   {
     "type": "->",
-    "named": false
-  },
-  {
-    "type": ":",
-    "named": false
-  },
-  {
-    "type": "=",
     "named": false
   },
   {
@@ -464,10 +480,6 @@
   },
   {
     "type": "line_comment",
-    "named": true
-  },
-  {
-    "type": "name",
     "named": true
   },
   {
