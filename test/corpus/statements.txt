@@ -8,8 +8,5 @@ favoritePie = "Apple pie"
 ---
 
 (source_file
-  (term_declaration
-    (type_signature (name) (type_builtin))
-    (term_definition
-      (name)
-      (text_literal))))
+  (type_signature (type_variable) (type_builtin))
+  (term_definition (type_variable) (text_literal)))

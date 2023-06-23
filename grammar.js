@@ -18,14 +18,14 @@ module.exports = grammar({
 
     _top_level_declaration: $ => choice(
       $._expression,
-      // $.term_declaration,
+      $._term_declaration,
       // $.type_declaration,
       // $.use_clause
     ),
 
-    // type_signature: $ => seq($.name, ':', $._type), // TODO separate type signature from type declaration?
-    // term_declaration: $ => seq(optional($.type_signature), $.term_definition),
-    // term_definition: $ => seq($.name, repeat($.param), '=', $._expression),
+    _term_declaration: $ => seq(optional($.type_signature), $.term_definition),
+    type_signature: $ => seq($.type_variable, ':', optional($._type)),
+    term_definition: $ => seq($.type_variable, repeat($.param), '=', $._expression),
 
     param: $ => prec.left(2, seq($.type_variable, optional($._type))),
 
@@ -44,6 +44,7 @@ module.exports = grammar({
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO
 
     _type: $ => choice(
+      $.type_builtin,
       $.type_polymorphic,
       // $.type_constructor,
       // $.type_application,
