@@ -730,34 +730,6 @@
     "named": false
   },
   {
-    "type": "?\u0000",
-    "named": false
-  },
-  {
-    "type": "?\b",
-    "named": false
-  },
-  {
-    "type": "?\t",
-    "named": false
-  },
-  {
-    "type": "?\n",
-    "named": false
-  },
-  {
-    "type": "?\u000b",
-    "named": false
-  },
-  {
-    "type": "?\f",
-    "named": false
-  },
-  {
-    "type": "?\r",
-    "named": false
-  },
-  {
     "type": "?\"",
     "named": false
   },
@@ -770,11 +742,39 @@
     "named": false
   },
   {
-    "type": "?a",
+    "type": "?\\0",
     "named": false
   },
   {
-    "type": "?s",
+    "type": "?\\a",
+    "named": false
+  },
+  {
+    "type": "?\\b",
+    "named": false
+  },
+  {
+    "type": "?\\f",
+    "named": false
+  },
+  {
+    "type": "?\\n",
+    "named": false
+  },
+  {
+    "type": "?\\r",
+    "named": false
+  },
+  {
+    "type": "?\\s",
+    "named": false
+  },
+  {
+    "type": "?\\t",
+    "named": false
+  },
+  {
+    "type": "?\\v",
     "named": false
   },
   {

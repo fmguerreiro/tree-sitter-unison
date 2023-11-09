@@ -16,7 +16,7 @@ module.exports = {
 
   boolean_literal: $ => choice('true', 'false'),
   byte_literal: $ => /0xs[0-9a-f]+/,
-  char_literal: $ => choice(RegExp(`\\?[\u{0000}-\u{10FFFF}]`), '?\t', '?\0', '?\a', '?\b', '?\f', '?\n', '?\r',  '?\v', '?\s', '?\\', '?\'', '?\"'),
+  char_literal: $ => choice(RegExp(`\\?[\u{0000}-\u{10FFFF}]`), '?\\t', '?\\0', '?\\a', '?\\b', '?\\f', '?\\n', '?\\r',  '?\\v', '?\\s', '?\\', '?\'', '?\"'),
   text_literal: $ => choice(
     seq('"', repeat(choice(/[^"\\\n]/, /\\./)), '"'),
     seq('"""', repeat(choice(/[^"\\]/, /\\./)), '"""')
