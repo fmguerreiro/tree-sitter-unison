@@ -1,0 +1,28 @@
+===============================
+type declaration 1
+===============================
+
+structural type Optional a = Some a | None
+
+---
+
+(source_file
+  (type_declaration
+    (declaration_modifier)
+    (generic_type_constructor (type_polymorphic (type_variable)))
+    (data_constructor
+      (type_polymorphic (type_variable))
+      (type_polymorphic))
+  ))
+
+
+=====
+term declaration 1
+=====
+
+timesTwo : Nat -> Nat
+timesTwo x = x * 2
+
+---
+
+(source_file)

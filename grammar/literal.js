@@ -6,6 +6,7 @@ module.exports = {
     $.text_literal,
     $.hash_literal,
     $.natural_literal,
+    $.integer_literal,
     $.float_literal,
     $.list_literal,
     $.tuple_literal,
@@ -22,9 +23,9 @@ module.exports = {
   ),
   hash_literal: $ => seq('#', /[0-9a-z]+/), // TODO: cyclical hashes
   natural_literal: $ => /[0-9]+/,
-  integer_literal: $ => token(seq(choice('+', '-'), token.immediate(/\d+/))),
+  integer_literal: $ => /[+-][1-9]+[0-9]*/,
   float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
   list_literal: $ =>  seq('[', sep1(',', optional($._literal)), ']'),
   tuple_literal: $ => seq('(', sep1(',', optional($._literal)), ')'),
-  lambda: $ => seq(repeat($.param), '->', $._expression),
+  lambda: $ => prec(1, seq(repeat($.param), '->', $._expression)),
 }

@@ -1,4 +1,4 @@
-const { sep1 } = require('./grammar/util')
+const { sep1, sep2 } = require('./grammar/util')
 const literal = require('./grammar/literal')
 const operation = require('./grammar/operation')
 
@@ -19,15 +19,34 @@ module.exports = grammar({
     _top_level_declaration: $ => choice(
       $._expression,
       $._term_declaration,
-      // $.type_declaration,
+      $.type_declaration,
+      // $.ability_declaration
       // $.use_clause
     ),
 
-    _term_declaration: $ => seq(optional($.type_signature), $.term_definition),
-    type_signature: $ => seq($.type_variable, ':', optional($._type)),
-    term_definition: $ => seq($.type_variable, repeat($.param), '=', $._expression),
+    _term_declaration: $ => prec(1, seq(optional($._type_signature), $.term_definition)),
+    _type_signature: $ => seq($.type_variable, ':', optional($._type)),
+    term_definition: $ => prec(1, seq($.type_variable, repeat($.param), '=', $._expression)),
 
-    param: $ => prec.left(2, seq($.type_variable, optional($._type))),
+    declaration_modifier: $ => choice('structural', 'unique'),
+    type_declaration: $ => seq($.declaration_modifier, 'type', $._type_constructor, '=', $.data_constructor),
+    // ability_declaration: $ => seq($.declaration_modifier, $.type_variable, '=', $.ability),
+
+    data_constructor: $ => sep1('|', $.type_polymorphic),
+    _type_constructor: $ => choice(
+      $.generic_type_constructor,
+      $.function_type_constructor,
+      $.tuple_type_constructor,
+      $.list_type_constructor
+    ),
+    generic_type_constructor: $ => seq($.type_polymorphic),
+    function_type_constructor: $ => sep2('->', $.type_polymorphic),
+    tuple_type_constructor: $ => seq('(', sep1(',', $.type_polymorphic), ')'),
+    list_type_constructor: $ => seq('[', sep1(',', $.type_polymorphic), ']'),
+
+    type_variable: $ => /[a-z][a-zA-Z0-9]*/,
+    type_polymorphic: $ => prec.right(1, seq(/[A-Z]+/, repeat($.type_variable))),
+    param: $ => $._type_signature,
 
     ...literal,
     ...operation,
@@ -40,7 +59,6 @@ module.exports = grammar({
     ),
 
 
-    // type_declaration: $ => seq($.name, ':', $._type),
     // use_clause: $ => seq('use', $.name, optional($.name)), // TODO
 
     _type: $ => choice(
@@ -51,13 +69,10 @@ module.exports = grammar({
       // $.type_parenthesized,
       $.type_function,
       // $.builtin_type,
-      $.type_builtin_constructor,
       // $.type_user_defined,
     ),
 
-    type_variable: $ => /[a-z][a-zA-Z0-9]*/,
-    type_polymorphic: $ => /[A-Z]+/, // TODO:
-    type_function: $ => prec.right(2, seq($._type, '->', $._type)),
+    type_function: $ => prec.right(1, seq($._type, '->', $._type)),
     type_builtin: $ => choice(
       'Nat',
       'Int',
@@ -67,12 +82,6 @@ module.exports = grammar({
       'Text',
       'Char',
       '()'),
-    type_builtin_constructor: $ => choice(
-      '->',
-      'Tuple',
-      'List', // TODO: also has an alias of [T] for type T
-      'abilities.Request' // TODO ?
-    ),
     // type_user_defined: $ => seq($.name, $.type_arguments),
 
     _terminator: _ => choice('\n', /;+/), // TODO:

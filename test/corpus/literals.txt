@@ -27,6 +27,7 @@ natural number literals
   (natural_literal)
   (natural_literal))
 
+
 ==============================
 integer number literals
 ==============================
