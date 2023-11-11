@@ -44,12 +44,13 @@ module.exports = grammar({
     tuple_type_constructor: $ => seq('(', sep1(',', $.type_polymorphic), ')'),
     list_type_constructor: $ => seq('[', sep1(',', $.type_polymorphic), ']'),
 
+    ...literal,
+    ...operation,
+
     type_variable: $ => /[a-z][a-zA-Z0-9]*/,
     type_polymorphic: $ => prec.right(1, seq(/[A-Z]+/, repeat($.type_variable))),
     param: $ => $._type_signature,
 
-    ...literal,
-    ...operation,
 
     _expression: $ => choice(
       $._literal,

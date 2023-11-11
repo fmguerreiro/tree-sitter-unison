@@ -27,5 +27,5 @@ module.exports = {
   float_literal: $ => /[+-]?[0-9]+\.[0-9]+/,
   list_literal: $ =>  seq('[', sep1(',', optional($._literal)), ']'),
   tuple_literal: $ => seq('(', sep1(',', optional($._literal)), ')'),
-  lambda: $ => prec(1, seq(repeat($.param), '->', $._expression)),
+  lambda: $ => seq(repeat($.param), '->', $._expression),
 }
