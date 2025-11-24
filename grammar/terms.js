@@ -80,4 +80,4 @@ module.exports = {
 };
 
 lam = ($, term) =>
-  seq($._prefix_definition_name, alias("->", $.arrow_symbol), term);
+  seq(repeat1($._prefix_definition_name), alias("->", $.arrow_symbol), term);

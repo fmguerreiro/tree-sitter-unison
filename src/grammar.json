@@ -1,4 +1,5 @@
 {
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "unison",
   "rules": {
     "unison": {
@@ -419,8 +420,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_prefix_definition_name"
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_prefix_definition_name"
+          }
         },
         {
           "type": "ALIAS",
@@ -441,8 +445,11 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_prefix_definition_name"
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_prefix_definition_name"
+          }
         },
         {
           "type": "ALIAS",
@@ -4710,6 +4717,14 @@
     [
       "destructuring_bind",
       "binding"
+    ],
+    [
+      "literal_function",
+      "_prefix_lhs"
+    ],
+    [
+      "literal_function",
+      "_infix_lhs"
     ]
   ],
   "precedences": [
@@ -4877,5 +4892,6 @@
     }
   ],
   "inline": [],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
