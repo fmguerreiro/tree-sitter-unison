@@ -10,9 +10,9 @@ const {
 module.exports = {
   _statement: ($) =>
     choice(
-      alias($._binding, $.term_declaration),
-      $.destructuring_bind, // TODO this is a problem where things gravitate toward this instead of block term for RHS of a KW_EQUALS
       $._block_term,
+      alias($._binding, $.term_declaration),
+      $.destructuring_bind,
     ),
   term_definition2: ($) =>
     prec.right(seq($._lhs, openBlockWith($, $.kw_equals), $.__block)),
@@ -52,12 +52,10 @@ module.exports = {
       alias($.term_definition2, $.term_definition),
     ),
   destructuring_bind: ($) =>
-    choice(
-      seq(
-        choice($.parenthesized_or_tuple_pattern),
-        openBlockWith($, $.kw_equals),
-        $.__layout_block,
-      ),
+    seq(
+      choice($.parenthesized_or_tuple_pattern),
+      openBlockWith($, $.kw_equals),
+      $.__layout_block,
     ),
 
   _block_term: ($) => choice($.literal_function, $._infix_app_or_boolean_op),

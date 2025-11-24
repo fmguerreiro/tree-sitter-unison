@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "unison",
   "rules": {
     "unison": {
@@ -23,6 +22,15 @@
             "type": "ALIAS",
             "content": {
               "type": "SYMBOL",
+              "name": "documented_binding"
+            },
+            "named": true,
+            "value": "term_declaration"
+          },
+          {
+            "type": "ALIAS",
+            "content": {
+              "type": "SYMBOL",
               "name": "binding"
             },
             "named": true,
@@ -31,6 +39,10 @@
           {
             "type": "SYMBOL",
             "name": "fold"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "documented_use_clause"
           },
           {
             "type": "SYMBOL",
@@ -52,6 +64,10 @@
       "type": "CHOICE",
       "members": [
         {
+          "type": "SYMBOL",
+          "name": "_block_term"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -63,10 +79,6 @@
         {
           "type": "SYMBOL",
           "name": "destructuring_bind"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "_block_term"
         }
       ]
     },
@@ -313,28 +325,19 @@
       }
     },
     "binding": {
+      "type": "SYMBOL",
+      "name": "_binding"
+    },
+    "documented_binding": {
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "doc_block"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_layout_semicolon"
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "doc_block"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_layout_semicolon"
         },
         {
           "type": "SYMBOL",
@@ -369,38 +372,33 @@
       ]
     },
     "destructuring_bind": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "parenthesized_or_tuple_pattern"
+            }
+          ]
+        },
         {
           "type": "SEQ",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "parenthesized_or_tuple_pattern"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "kw_equals"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "_layout_start"
-                }
-              ]
+              "type": "SYMBOL",
+              "name": "kw_equals"
             },
             {
               "type": "SYMBOL",
-              "name": "__layout_block"
+              "name": "_layout_start"
             }
           ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "__layout_block"
         }
       ]
     },
@@ -3108,20 +3106,20 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "structural"
-            },
-            {
               "type": "CHOICE",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "unique"
+                  "name": "structural"
                 },
                 {
-                  "type": "BLANK"
+                  "type": "SYMBOL",
+                  "name": "unique"
                 }
               ]
+            },
+            {
+              "type": "BLANK"
             }
           ]
         },
@@ -3945,6 +3943,23 @@
         ]
       }
     },
+    "documented_use_clause": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "doc_block"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_layout_semicolon"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "use_clause"
+        }
+      ]
+    },
     "do": {
       "type": "STRING",
       "value": "do"
@@ -4683,6 +4698,18 @@
     [
       "_identifier",
       "_wordy_definition_name"
+    ],
+    [
+      "destructuring_bind",
+      "_block_term"
+    ],
+    [
+      "destructuring_bind",
+      "_binding"
+    ],
+    [
+      "destructuring_bind",
+      "binding"
     ]
   ],
   "precedences": [
@@ -4843,10 +4870,6 @@
     {
       "type": "SYMBOL",
       "name": "_guard_layout_start"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "_destructuring_bind_start"
     },
     {
       "type": "SYMBOL",

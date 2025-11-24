@@ -115,7 +115,7 @@ typedef enum {
     OCTOTHORPE,
     DOC_BLOCK,
     GUARD_LAYOUT_START,
-    DESTRUCTURE_START,
+
     FAIL, // always last in list
 } Sym;
 
@@ -140,7 +140,6 @@ static char *sym_names[] = {
     "octothorpe",
     "doc block",
     "guard layout start",
-    "destructure start",
     "fail",
 };
 // #endif
@@ -1389,8 +1388,10 @@ static Result handle_negative(State *state) {
  *   - '|' in a quasiquote, since it can be followed by symbolic operator characters, which would be consumed
  * TODO: should this handle -> instead of layout_start handling it?
  */
+
 static Result inline_tokens(State *state) {
   LOG(INFO, "->inline_tokens (%u, %c)\n", COL, PEEK);
+
   // if (PEEK == '+') {
   //   Result res = layout_end("+", state);
   //   SHORT_SCANNER;
@@ -1746,7 +1747,6 @@ static Result init(State *state) {
   Result res = eof(state);
   SHORT_SCANNER;
 
-
   // res = after_error(state) ? res_fail : res_cont;
   // SHORT_SCANNER;
   /**
@@ -1782,6 +1782,7 @@ static Result scan_main(State *state) {
   skipspace(state);
   Result res = eof(state);
   SHORT_SCANNER;
+
   MARK("main", false, state);
   if (is_newline(PEEK)) {
     LOG(VERBOSE, "is newline\n");

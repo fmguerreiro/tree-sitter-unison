@@ -16,4 +16,7 @@ module.exports = ($) => [
   [$._infix_app_or_boolean_op],
   [$._pattern_constructor, $.effect_bind],
   [$._identifier, $._wordy_definition_name],
+  [$.destructuring_bind, $._block_term],
+  [$.destructuring_bind, $._binding],
+  [$.destructuring_bind, $.binding],
 ];
