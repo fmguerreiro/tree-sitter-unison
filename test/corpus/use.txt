@@ -28,3 +28,10 @@ use Search lubIndexOf'
 use base.List ++
 ---
 (unison (use_clause (use) (namespace (path) (regular_identifier)) (operator)))
+
+===
+[use] namespace with multiple operators
+===
+use Nat + - *
+---
+(unison (use_clause (use) (namespace (regular_identifier)) (operator) (operator) (operator)))
