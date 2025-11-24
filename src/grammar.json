@@ -762,12 +762,17 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "\\?.",
+          "value": "\\?\\\\[0abfnrtvs\\'\"\\\\]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "\\?=.",
           "flags": "u"
         },
         {
           "type": "PATTERN",
-          "value": "\\?\\\\[0abfnrtvs\\'\"]"
+          "value": "\\?[^\\\\=]",
+          "flags": "u"
         }
       ]
     },
