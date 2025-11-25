@@ -22,4 +22,9 @@ module.exports = ($) => [
   [$.literal_function, $._prefix_lhs],
   [$.literal_function, $._infix_lhs],
   [$.tuple_or_parenthesized, $.parenthesized_or_tuple_pattern],
+  [$._statement, $.delay_block],
+  [$._statement, $.exp_let],
+  [$._statement, $.__block],
+  [$._statement, $.__layout_block],
+  [$._statement, $.guarded_block],
 ];

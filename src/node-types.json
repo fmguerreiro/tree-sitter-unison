@@ -3734,6 +3734,10 @@
           "named": true
         },
         {
+          "type": "use_clause",
+          "named": true
+        },
+        {
           "type": "with",
           "named": true
         }

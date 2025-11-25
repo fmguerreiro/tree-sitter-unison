@@ -13,16 +13,13 @@ module.exports = {
       $._block_term,
       alias($._binding, $.term_declaration),
       $.destructuring_bind,
+      $.use_clause,
     ),
   term_definition2: ($) =>
     prec.right(seq($._lhs, openBlockWith($, $.kw_equals), $.__block)),
 
   __block: ($) =>
     seq(
-      optional(
-        seq(sep1($._layout_semicolon, $.use_clause), $._layout_semicolon),
-      ),
-      // terminated($, $._statement),
       seq(
         prec.right(sep1($._layout_semicolon, choice($._statement))),
         optional($._layout_semicolon),
@@ -33,9 +30,6 @@ module.exports = {
   __layout_block: ($) =>
     prec.right(
       seq(
-        optional(
-          seq(sep1($._layout_semicolon, $.use_clause), $._layout_semicolon),
-        ),
         seq(
           sep1($._layout_semicolon, $._statement),
           optional($._layout_semicolon),
