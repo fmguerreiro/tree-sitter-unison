@@ -53,6 +53,26 @@ parser_config.unison = {
 }
 ```
 
+#### Emacs
+
+Requires Emacs 29+ with native tree-sitter support. Use [unison-ts-mode](https://github.com/fmguerreiro/unison-ts-mode):
+
+```elisp
+;; use-package + straight
+(use-package unison-ts-mode
+  :straight (:host github :repo "fmguerreiro/unison-ts-mode")
+  :mode ("\\.u\\'" "\\.unison\\'"))
+
+;; straight.el
+(straight-use-package
+  '(unison-ts-mode :type git :host github :repo "fmguerreiro/unison-ts-mode"))
+
+;; Doom Emacs (packages.el)
+(package! unison-ts-mode :recipe (:host github :repo "fmguerreiro/unison-ts-mode"))
+```
+
+The tree-sitter grammar will be installed automatically when you first open a `.u` file.
+
 #### Helix
 
 Add to your `languages.toml`:
