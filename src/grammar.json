@@ -812,7 +812,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "\\?.",
+          "value": "\\?[\\s\\S]",
           "flags": "u"
         },
         {
@@ -3638,7 +3638,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_type2"
+          "name": "_type2a"
         }
       ]
     },

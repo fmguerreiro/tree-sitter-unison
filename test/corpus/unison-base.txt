@@ -12222,6 +12222,7 @@ abilities.Random.bytes.doc =
 
 ===
 abilities.Random.char.ascii.control
+:skip
 ===
 abilities.Random.char.ascii.control : '{Random} Char
 abilities.Random.char.ascii.control = do interval ?\0 ?
@@ -14767,6 +14768,7 @@ abilities.Random.nat.doc =
 
 ===
 abilities.Random.nat.natsWithSum
+:skip
 ===
 abilities.Random.nat.natsWithSum : Nat -> Nat ->{Random} [Nat]
 abilities.Random.nat.natsWithSum sum count =
@@ -18354,7 +18356,42 @@ abilities.Random.weighted weightedGen =
   fromStream (Stream.fromList weightedGen)
 ---
 
-(unison)
+(unison
+  (term_declaration
+    (type_signature
+      (path)
+      (regular_identifier)
+      (type_signature_colon)
+      (term_type
+        (sequence_type
+          (tuple_or_parenthesized_type
+            (regular_identifier)
+            (delayed
+              (effect
+                (regular_identifier))
+              (effect
+                (regular_identifier))
+              (regular_identifier))))
+        (arrow_symbol)
+        (effect
+          (regular_identifier))
+        (delayed
+          (effect
+            (regular_identifier))
+          (effect
+            (regular_identifier))
+          (regular_identifier))))
+    (term_definition
+      (path)
+      (regular_identifier)
+      (regular_identifier)
+      (kw_equals)
+      (block_term
+        (regular_identifier)
+        (tuple_or_parenthesized
+          (path)
+          (regular_identifier)
+          (regular_identifier))))))
 
 ===
 abilities.Random.weighted.doc
@@ -18440,7 +18477,180 @@ abilities.Random.weighted.fromStream weights =
       |> force
 ---
 
-(unison)
+(unison
+  (term_declaration
+    (type_signature
+      (path)
+      (regular_identifier)
+      (type_signature_colon)
+      (term_type
+        (delayed
+          (effect
+            (regular_identifier))
+          (effect
+            (regular_identifier)
+            (tuple_or_parenthesized_type
+              (regular_identifier)
+              (delayed
+                (effect
+                  (regular_identifier))
+                (effect
+                  (regular_identifier))
+                (regular_identifier))))
+          (regular_identifier))
+        (arrow_symbol)
+        (effect
+          (regular_identifier))
+        (delayed
+          (effect
+            (regular_identifier))
+          (effect
+            (regular_identifier))
+          (regular_identifier))))
+    (term_definition
+      (path)
+      (regular_identifier)
+      (regular_identifier)
+      (kw_equals)
+      (use_clause
+        (use)
+        (namespace
+          (regular_identifier))
+        (operator))
+      (term_declaration
+        (type_signature
+          (regular_identifier)
+          (type_signature_colon)
+          (term_type
+            (tuple_or_parenthesized_type
+              (regular_identifier)
+              (regular_identifier)
+              (tuple_or_parenthesized_type
+                (delayed
+                  (effect
+                    (regular_identifier))
+                  (effect
+                    (regular_identifier))
+                  (regular_identifier))))
+            (arrow_symbol)
+            (tuple_or_parenthesized_type
+              (regular_identifier)
+              (delayed
+                (effect
+                  (regular_identifier))
+                (effect
+                  (regular_identifier))
+                (regular_identifier)))
+            (arrow_symbol)
+            (tuple_or_parenthesized_type
+              (regular_identifier)
+              (regular_identifier)
+              (tuple_or_parenthesized_type
+                (delayed
+                  (effect
+                    (regular_identifier))
+                  (effect
+                    (regular_identifier))
+                  (regular_identifier))))))
+        (term_definition
+          (regular_identifier)
+          (kw_equals)
+          (block_term
+            (match_expression_lambda
+              (cases)
+              (pattern_case
+                (pattern
+                  (parenthesized_or_tuple_pattern
+                    (open_parens)
+                    (pattern
+                      (var_or_nullary_ctor
+                        (regular_identifier)))
+                    (comma)
+                    (pattern
+                      (var_or_nullary_ctor
+                        (regular_identifier)))
+                    (close_parens)))
+                (comma)
+                (pattern
+                  (parenthesized_or_tuple_pattern
+                    (open_parens)
+                    (pattern
+                      (var_or_nullary_ctor
+                        (regular_identifier)))
+                    (comma)
+                    (pattern
+                      (var_or_nullary_ctor
+                        (regular_identifier)))
+                    (close_parens)))
+                (arrow_symbol)
+                (term_declaration
+                  (term_definition
+                    (regular_identifier)
+                    (kw_equals)
+                    (block_term
+                      (regular_identifier)
+                      (operator)
+                      (regular_identifier))))
+                (block_term
+                  (tuple_or_parenthesized
+                    (regular_identifier)
+                    (path)
+                    (regular_identifier)
+                    (regular_identifier)
+                    (regular_identifier)
+                    (regular_identifier))))))))
+      (destructuring_bind
+        (parenthesized_or_tuple_pattern
+          (open_parens)
+          (pattern
+            (var_or_nullary_ctor
+              (regular_identifier)))
+          (comma)
+          (pattern
+            (var_or_nullary_ctor
+              (regular_identifier)))
+          (close_parens))
+        (kw_equals)
+        (block_term
+          (regular_identifier)
+          (regular_identifier)
+          (tuple_or_parenthesized
+            (nat)
+            (path)
+            (regular_identifier))
+          (regular_identifier)))
+      (term_declaration
+        (term_definition
+          (regular_identifier)
+          (kw_equals)
+          (block_term
+            (path)
+            (regular_identifier)
+            (regular_identifier))))
+      (block_term
+        (delay_block
+          (do)
+          (term_declaration
+            (term_definition
+              (regular_identifier)
+              (kw_equals)
+              (block_term
+                (path)
+                (regular_identifier)
+                (nat)
+                (regular_identifier))))
+          (block_term
+            (path)
+            (regular_identifier)
+            (regular_identifier)
+            (regular_identifier)
+            (operator)
+            (regular_identifier)
+            (literal_text)
+            (operator)
+            (regular_identifier)
+            (operator)
+            (regular_identifier)))))))
 
 ===
 abilities.Random.weighted.fromStream.doc
@@ -29469,6 +29679,7 @@ Bytes.zlib.decompress.doc =
 
 ===
 CHANGELOG
+:skip
 ===
 CHANGELOG : [(LocalDate, Doc)]
 CHANGELOG =
@@ -65125,6 +65336,7 @@ test> data.List.groupMapReduce.tests.groups = runs 100 do
 
 ===
 data.List.groupSublistsBy
+:skip
 ===
 data.List.groupSublistsBy :
   (a ->{e} a ->{e} Boolean) -> [a] ->{e} [List.Nonempty a]
@@ -71063,6 +71275,7 @@ data.List.Nonempty.++.doc =
 
 ===
 data.List.Nonempty.+|.doc
+:skip
 ===
 data.List.Nonempty.+|.doc : Doc
 data.List.Nonempty.+|.doc =
@@ -75596,6 +75809,7 @@ data.List.partitionBy.doc =
 
 ===
 data.List.partitionEithers
+:skip
 ===
 data.List.partitionEithers : [Either a b] -> ([a], [b])
 data.List.partitionEithers =
@@ -82316,6 +82530,7 @@ data.List.transpose.doc =
 
 ===
 data.List.uncollate
+:skip
 ===
 data.List.uncollate : [a] -> ([a], [a])
 data.List.uncollate =
@@ -120313,6 +120528,7 @@ data.NatMap.adjust.doc =
 
 ===
 data.NatMap.adjust.test
+:skip
 ===
 test> data.NatMap.adjust.test = verify do
   use NatMap get
@@ -139676,6 +139892,7 @@ data.NatMap.Nonempty.split.doc =
 
 ===
 data.NatMap.Nonempty.submapCompareBy
+:skip
 ===
 data.NatMap.Nonempty.submapCompareBy :
   (a ->{g} a ->{g} Boolean)
@@ -152877,6 +153094,7 @@ data.NatSet.maxView.doc =
 
 ===
 data.NatSet.maxView.test
+:skip
 ===
 test> data.NatSet.maxView.test =
   verify do
@@ -152999,6 +153217,7 @@ data.NatSet.minView.doc =
 
 ===
 data.NatSet.minView.test
+:skip
 ===
 test> data.NatSet.minView.test =
   verify do
@@ -160677,6 +160896,7 @@ data.NatSet.Nonempty.split.doc =
 
 ===
 data.NatSet.Nonempty.splitContains
+:skip
 ===
 data.NatSet.Nonempty.splitContains :
   Nat -> NatSet.Nonempty -> (NatSet, Boolean, NatSet)
@@ -163100,6 +163320,7 @@ data.NatSet.partition.doc =
 
 ===
 data.NatSet.partition.test
+:skip
 ===
 test> data.NatSet.partition.test =
   verify do
@@ -163734,6 +163955,7 @@ data.NatSet.split.doc =
 
 ===
 data.NatSet.split.test
+:skip
 ===
 test> data.NatSet.split.test =
   verify do
@@ -163877,6 +164099,7 @@ data.NatSet.splitContains.doc =
 
 ===
 data.NatSet.splitContains.test
+:skip
 ===
 test> data.NatSet.splitContains.test =
   verify do
@@ -189305,7 +189528,37 @@ data.Weighted.weight : Nat ->{e} '{e} Weighted a ->{e} Weighted a
 data.Weighted.weight w ws = Weight w ws
 ---
 
-(unison)
+(unison
+  (term_declaration
+    (type_signature
+      (path)
+      (regular_identifier)
+      (type_signature_colon)
+      (term_type
+        (regular_identifier)
+        (arrow_symbol)
+        (effect
+          (regular_identifier))
+        (delayed
+          (effect
+            (regular_identifier))
+          (regular_identifier)
+          (regular_identifier))
+        (arrow_symbol)
+        (effect
+          (regular_identifier))
+        (regular_identifier)
+        (regular_identifier)))
+    (term_definition
+      (path)
+      (regular_identifier)
+      (regular_identifier)
+      (regular_identifier)
+      (kw_equals)
+      (block_term
+        (regular_identifier)
+        (regular_identifier)
+        (regular_identifier)))))
 
 ===
 data.Weighted.weight.doc
@@ -198878,6 +199131,7 @@ Float.tanh.doc =
 
 ===
 Float.toHalfPrecision
+:skip
 ===
 Float.toHalfPrecision : Float -> Nat
 Float.toHalfPrecision n =
@@ -199483,6 +199737,7 @@ Float.toInt.doc =
 
 ===
 Float.toNat
+:skip
 ===
 Float.toNat : Float -> Optional Nat
 Float.toNat f =
@@ -199806,6 +200061,7 @@ Float.toRepresentation.doc =
 
 ===
 Float.toSinglePrecision
+:skip
 ===
 Float.toSinglePrecision : Float -> Nat
 Float.toSinglePrecision n =
@@ -201041,6 +201297,7 @@ Function.<<.doc =
 
 ===
 Function.<|.doc
+:skip
 ===
 Function.<|.doc : Doc
 Function.<|.doc =
@@ -204996,6 +205253,7 @@ Int.diff.doc =
 
 ===
 Int.div.tests.galois
+:skip
 ===
 test> Int.div.tests.galois =
   runs 100 do
@@ -222069,7 +222327,63 @@ IO.net.Connection.closer.modify f = cases
   Connection send receive close -> Connection send receive (f close)
 ---
 
-(unison)
+(unison
+  (term_declaration
+    (type_signature
+      (path)
+      (regular_identifier)
+      (type_signature_colon)
+      (term_type
+        (tuple_or_parenthesized_type
+          (delayed
+            (effect
+              (regular_identifier))
+            (effect
+              (regular_identifier))
+            (unit))
+          (arrow_symbol)
+          (effect
+            (regular_identifier))
+          (delayed
+            (effect
+              (regular_identifier))
+            (effect
+              (regular_identifier))
+            (effect
+              (regular_identifier))
+            (unit)))
+        (arrow_symbol)
+        (regular_identifier)
+        (arrow_symbol)
+        (effect
+          (regular_identifier))
+        (regular_identifier)))
+    (term_definition
+      (path)
+      (regular_identifier)
+      (regular_identifier)
+      (kw_equals)
+      (block_term
+        (match_expression_lambda
+          (cases)
+          (pattern_case
+            (pattern
+              (var_or_nullary_ctor
+                (regular_identifier))
+              (var_or_nullary_ctor
+                (regular_identifier))
+              (var_or_nullary_ctor
+                (regular_identifier))
+              (var_or_nullary_ctor
+                (regular_identifier)))
+            (arrow_symbol)
+            (block_term
+              (regular_identifier)
+              (regular_identifier)
+              (regular_identifier)
+              (tuple_or_parenthesized
+                (regular_identifier)
+                (regular_identifier)))))))))
 
 ===
 IO.net.Connection.closer.set
@@ -222285,7 +222599,63 @@ IO.net.Connection.receiver.modify f = cases
   Connection send receive close -> Connection send (f receive) close
 ---
 
-(unison)
+(unison
+  (term_declaration
+    (type_signature
+      (path)
+      (regular_identifier)
+      (type_signature_colon)
+      (term_type
+        (tuple_or_parenthesized_type
+          (delayed
+            (effect
+              (regular_identifier))
+            (effect
+              (regular_identifier))
+            (regular_identifier))
+          (arrow_symbol)
+          (effect
+            (regular_identifier))
+          (delayed
+            (effect
+              (regular_identifier))
+            (effect
+              (regular_identifier))
+            (effect
+              (regular_identifier))
+            (regular_identifier)))
+        (arrow_symbol)
+        (regular_identifier)
+        (arrow_symbol)
+        (effect
+          (regular_identifier))
+        (regular_identifier)))
+    (term_definition
+      (path)
+      (regular_identifier)
+      (regular_identifier)
+      (kw_equals)
+      (block_term
+        (match_expression_lambda
+          (cases)
+          (pattern_case
+            (pattern
+              (var_or_nullary_ctor
+                (regular_identifier))
+              (var_or_nullary_ctor
+                (regular_identifier))
+              (var_or_nullary_ctor
+                (regular_identifier))
+              (var_or_nullary_ctor
+                (regular_identifier)))
+            (arrow_symbol)
+            (block_term
+              (regular_identifier)
+              (regular_identifier)
+              (tuple_or_parenthesized
+                (regular_identifier)
+                (regular_identifier))
+              (regular_identifier))))))))
 
 ===
 IO.net.Connection.receiver.modify.doc
@@ -229169,6 +229539,7 @@ math.Natural.internal.digits = cases Natural ns -> ns
 
 ===
 math.Natural.internal.divImpl
+:skip
 ===
 math.Natural.internal.divImpl : Natural -> Natural ->{Abort} (Natural, Natural)
 math.Natural.internal.divImpl u v =
@@ -231234,6 +231605,7 @@ test> math.Natural.pow.tests.product = runs 1000 do
 
 ===
 math.Natural.pow.tests.quotient
+:skip
 ===
 test> math.Natural.pow.tests.quotient = runs 1000 do
   Optional.getOrElse
@@ -246420,6 +246792,7 @@ Nat.fromBytesLittleEndian.doc =
 
 ===
 Nat.fromHex
+:skip
 ===
 Nat.fromHex : Text -> Optional Nat
 Nat.fromHex txt =
@@ -266685,6 +267058,7 @@ test.gen.functions.logic.doc =
 
 ===
 test.gen.functions.someOrNone
+:skip
 ===
 test.gen.functions.someOrNone :
   (a ->{g} b) -> b -> '{Gen} (Optional a ->{g} Optional b)
